@@ -2,7 +2,6 @@
 import { ArrowRight } from "lucide-vue-next";
 import {formatToBRL, formatToBRLInput} from "../assets/formata-brl"
 import { getNomes } from "../assets/get-nomes";
-import Variacao from "./Variacao.vue";
 import { ref, computed} from 'vue';
 const props = defineProps(["dolarToReal"])
 
@@ -21,11 +20,11 @@ function handleInput(event) {
 </script>
 
 <template>
-
-    <div v-if="dolarToReal" class="flex items-center w-full gap-4  max-w-[700px]">    
-      <div class="border rounded-lg p-4 mt-4 w-full max-w-[200px]">
-        <h2 class="text-xl font-bold">{{ getNomes(dolarToReal.name)[0] }}</h2>
-        <div class="w-full flex gap-2 text-2xl">
+    <div v-if="dolarToReal" class="flex items-center w-full gap-2 sm:gap-4 max-w-[700px] text-base sm:text-xl" >    
+      <div class="border rounded-lg p-4 w-full max-w-[200px]">
+        <h2 class="font-bold sm:hidden inline-block">{{  getNomes(dolarToReal.name)[0].split(" ")[0] }}</h2>
+        <h2 class="font-bold hidden sm:inline-block">{{  getNomes(dolarToReal.name)[0] }}</h2>
+        <div class="w-full flex gap-2 text-xl sm:text-2xl">
           <span>U$</span>
           <input 
             class="flex-1 w-0 border-0 focus:outline-none" 
@@ -35,14 +34,12 @@ function handleInput(event) {
             v-model="dolar"
             @input="handleInput">
         </div>
-      </div>
-      
+      </div>      
       <ArrowRight/>
-      
-      <div class="border rounded-lg p-4 mt-4 w-full max-w-[200px]">
-        <h2 class="text-xl font-bold">{{  getNomes(dolarToReal.name)[1] }}</h2>
-
-        <p class="text-2xl">{{ formatToBRL(real) }}</p>
+      <div class="border rounded-lg p-4 w-full max-w-[200px]">
+        <h2 class="font-bold sm:hidden inline-block">{{  getNomes(dolarToReal.name)[1].split(" ")[0] }}</h2>
+        <h2 class="font-bold hidden sm:inline-block">{{  getNomes(dolarToReal.name)[1] }}</h2>
+        <p class="text-xl sm:text-2xl">{{ formatToBRL(real) }}</p>
       </div>
     </div>
 </template>
