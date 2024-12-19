@@ -1,9 +1,7 @@
 <script setup>
 import {getNomes} from "../assets/get-nomes"
 import {formatToBRL} from "../assets/formata-brl"
-import { TrendingUp, TrendingDown, MoveRight} from 'lucide-vue-next';
 import Variacao from "./Variacao.vue";
-
 defineProps(["dados", "keys"])
 
 </script>
